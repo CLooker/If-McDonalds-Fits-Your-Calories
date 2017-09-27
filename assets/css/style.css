@@ -1,10 +1,30 @@
-
 *{
   font-family: 'Dosis', sans-serif;
 }
 
 html{
   background-image: url("../images/topography.png");
+}
+
+nav {
+  background-color: #be0c0c;
+}
+
+footer.page-footer {
+  background-color: #be0c0c;
+  border-top: 1px solid #cccccc;
+}
+
+.tabs .tab a {
+  color: #be0c0c;
+}
+
+.tabs.tabs-fixed-width {
+  border-bottom: 1px solid #cccccc;
+}
+
+.btn {
+  background-color: #be0c0c;
 }
 
 .nav-wrapper a h1{
@@ -44,7 +64,7 @@ footer{
 
 .about p{
   padding: 5px;
-  border: 1px solid #ee6e73;
+  border: 1px solid #be0c0c;
   border-radius: 2px;
   box-shadow: 2px 2px 5px #c3c3c3;
 }
