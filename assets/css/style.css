@@ -13,6 +13,8 @@ nav {
 footer.page-footer {
   background-color: #bf4444;
   border-top: 1px solid #cccccc;
+  position: fixed;
+  bottom: 0;
 }
 
 .tabs .tab a {
