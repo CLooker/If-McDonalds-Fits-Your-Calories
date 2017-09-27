@@ -32,24 +32,14 @@ footer.page-footer {
   background-color: #ffd100;
 }
 
-/*input[type=text]:not(.browser-default) {
-  
+.input-field input:focus + label {
+   color: #cccccc !important;
 }
 
-input[type=text]:focus {
-     border-bottom: 1px solid ;
-     box-shadow: 0 1px 0 0 #bf4444;
-   }*/
-
-/* label focus color */
- .input-field input:focus + label {
-   color: red !important;
- }
- /* label underline focus color */
- .row .input-field input:focus {
-   border-bottom: 1px solid #bf4444 !important;
-   box-shadow: 0 1px 0 0 red !important
- }
+.row .input-field input:focus {
+  border-bottom: 1px solid #cccccc !important;
+  box-shadow: 0 1px 0 0 #bf5f5f !important
+}
 
 .nav-wrapper a h1{
   margin-top: 0px;
@@ -88,7 +78,7 @@ footer{
 
 .about p{
   padding: 5px;
-  border: 1px solid #bf4444;
+  border: 1px solid #bf5f5f;
   border-radius: 2px;
   box-shadow: 2px 2px 5px #c3c3c3;
 }
