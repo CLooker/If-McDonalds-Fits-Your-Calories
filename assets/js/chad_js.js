@@ -1,51 +1,58 @@
 $( document ).ready(function() {
 
   // empty arrays we will populate with our meal items
-  var finishedMealArray1 = [],
-      finishedMealArray2 = [],
-      finishedMealArray3 = [],
+  // var finishedMealArray1 = [],
+  //     finishedMealArray2 = [],
+  //     finishedMealArray3 = [];
+
+
+
+  var meals = {
+    meal1: {
+      meal: [],
+      calories: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0
+    },
+    meal2: {
+      meal: [],
+      calories: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0
+    },
+    meal3: {
+      meal: [],
+      calories: 0,
+      protein: 0,
+      carbs: 0,
+      fat: 0
+    }
+  };
 
   // store total nutrtional info for each meal
-  // finishedMealNutrition = {
-  //   finishedMeal1: {
-  //     calories: 0,
-  //     protein: 0,
-  //     carbs: 0,
-  //     fat: 0
-  //   },
-  //   finishedMeal2: {
-  //     calories: 0,
-  //     protein: 0,
-  //     carbs: 0,
-  //     fat: 0
-  //   },
-  //   finishedMeal3: {
-  //     calories: 0,
-  //     protein: 0,
-  //     carbs: 0,
-  //     fat: 0
-  //   }
-  // };
 
 
-  finishedMeal1Calories = 0,
-  finishedMeal1Protein = 0,
-  finishedMeal1Carbs = 0,
-  finishedMeal1Fat = 0,
-  finishedMeal2Calories = 0,
-  finishedMeal2Protein = 0,
-  finishedMeal2Carbs = 0,
-  finishedMeal2Fat = 0,
-  finishedMeal3Calories = 0,
-  finishedMeal3Protein = 0,
-  finishedMeal3Carbs = 0,
-  finishedMeal3Fat = 0;
+
+  // meal1Calories = 0,
+  // meal1Protein = 0,
+  // meal1Carbs = 0,
+  // meal1Fat = 0,
+  // meal2Calories = 0,
+  // meal2Protein = 0,
+  // meal2Carbs = 0,
+  // meal2Fat = 0,
+  // meal3Calories = 0,
+  // meal3Protein = 0,
+  // meal3Carbs = 0,
+  // meal3Fat = 0;
 
   // displays meal items and nutrition for each finished meal
   function showFood(mealNumber){
     $(`#meal${mealNumber}Contents`).html(localStorage.getItem(`meal${mealNumber}Contents`));
 
-    var temp = $(`#meal${mealNumber}Calories`).html("Calories: ");
+    let temp = $(`#meal${mealNumber}Calories`).html("Calories: ");
     temp = temp.append(localStorage.getItem(`meal${mealNumber}Calories`));
     temp = temp.append("<br>");
     temp = temp.append("Protein: ");
@@ -58,25 +65,63 @@ $( document ).ready(function() {
     temp = temp.append(localStorage.getItem(`meal${mealNumber}Fat`));
   }
 
-    // if the #id that holds the meal1 calories exists, then display meal info and pictures
-  if("#meal1Calories".length > 0){
+  function showAllMeals(howManyMeals) {
+    for (let i = 1; i <= howManyMeals; i++) {
+      showFood(i);
+    }
 
-    $( document ).ready(function() {
-      showFood(1);
-      showFood(2);
-      showFood(3);
-      $("#meal1Picture").attr("src", localStorage.getItem("meal1ImgSrc"));
-      $("#meal2Picture").attr("src", localStorage.getItem("meal2ImgSrc"));
-      $("#meal3Picture").attr("src", localStorage.getItem("meal3ImgSrc"));
-      }
-    );
+    // showFood(1);
+    // showFood(2);
+    // showFood(3);
   }
+
+  function getMealPictures(howManyMeals) {
+    for (let i = 1; i <= howManyMeals; i++) {
+      $(`#meal${i}Picture`).attr("src", localStorage.getItem(`meal${i}ImgSrc`));
+    }
+
+
+    // $("#meal1Picture").attr("src", localStorage.getItem("meal1ImgSrc"));
+    // $("#meal2Picture").attr("src", localStorage.getItem("meal2ImgSrc"));
+    // $("#meal3Picture").attr("src", localStorage.getItem("meal3ImgSrc"));
+  }
+
+  function showMealsAndPictures() {
+    // if the #id that holds the meal1 calories exists, then display meal info and pictures
+    if("#meal1Calories".length > 0){
+      showAllMeals(3);
+      getMealPictures(3);
+    }
+  }
+
+  showMealsAndPictures();
 
   // button click handler
   $("#submitBtn").click(function() {
-    finishedMealArray1 = [],
-    finishedMealArray2 = [],
-    finishedMealArray3 = [];
+    // finishedMealArray1 = [];
+    // finishedMealArray2 = [];
+    // finishedMealArray3 = [];
+
+  //   var meals = {
+  //   meal1: {
+  //     calories: 0,
+  //     protein: 0,
+  //     carbs: 0,
+  //     fat: 0
+  //   },
+  //   meal2: {
+  //     calories: 0,
+  //     protein: 0,
+  //     carbs: 0,
+  //     fat: 0
+  //   },
+  //   meal3: {
+  //     calories: 0,
+  //     protein: 0,
+  //     carbs: 0,
+  //     fat: 0
+  //   }
+  // };
     // Nutrionix API information
     let nxAppId = "da62e249",
         nxAppKey = "7276dd89558157da5bd0ca1053e932cb",
@@ -267,29 +312,31 @@ $( document ).ready(function() {
 
       // calculate total nutriton for the respective meal
       function totalNutrition(x) {
-        // finishedMealNutrition[`finishedMeal${x}`.calories] += mealItemCalories;
-        // finishedMealNutrition[`finishedMeal${x}`.protein] += mealItemProtein;
-        // finishedMealNutrition[`finishedMeal${x}`.carbs] += mealItemCarbs;
-        // finishedMealNutrition[`finishedMeal${x}`.fat] += mealItemFat;
 
-        if(x === 1){
-          finishedMeal1Calories += mealItemCalories;
-          finishedMeal1Protein += mealItemProtein;
-          finishedMeal1Carbs += mealItemCarbs;
-          finishedMeal1Fat += mealItemFat;
-        }
-        if(x === 2){
-          finishedMeal2Calories += mealItemCalories;
-          finishedMeal2Protein += mealItemProtein;
-          finishedMeal2Carbs += mealItemCarbs;
-          finishedMeal2Fat += mealItemFat;
-        }
-        if(x === 3){
-          finishedMeal3Calories += mealItemCalories;
-          finishedMeal3Protein += mealItemProtein;
-          finishedMeal3Carbs += mealItemCarbs;
-          finishedMeal3Fat += mealItemFat;
-        }
+        meals[`meal${x}`].calories += mealItemCalories;
+        meals[`meal${x}`].protein += mealItemProtein;
+        meals[`meal${x}`].carbs += mealItemCarbs;
+        meals[`meal${x}`].fat += mealItemFat;
+
+
+        // if(x === 1){
+        //   meal1Calories += mealItemCalories;
+        //   meal1Protein += mealItemProtein;
+        //   meal1Carbs += mealItemCarbs;
+        //   meal1Fat += mealItemFat;
+        // }
+        // if(x === 2){
+        //   meal2Calories += mealItemCalories;
+        //   meal2Protein += mealItemProtein;
+        //   meal2Carbs += mealItemCarbs;
+        //   meal2Fat += mealItemFat;
+        // }
+        // if(x === 3){
+        //   meal3Calories += mealItemCalories;
+        //   meal3Protein += mealItemProtein;
+        //   meal3Carbs += mealItemCarbs;
+        //   meal3Fat += mealItemFat;
+        // }
       }
 
       // log the name and nutritional info
@@ -308,13 +355,14 @@ $( document ).ready(function() {
       // then we start pushing meal items that new array
       if (flagArray[0] === false) {
         totalNutrition(1);
-        finishedMealArray1.push(response.hits[randomAjaxMealIndex].fields);
+
+         meals.meal1.meal.push(response.hits[randomAjaxMealIndex].fields);
       } else if (flagArray[1] === false) {
         totalNutrition(2);
-        finishedMealArray2.push(response.hits[randomAjaxMealIndex].fields);
+         meals.meal2.meal.push(response.hits[randomAjaxMealIndex].fields);
       } else if (flagArray[2] === false) {
         totalNutrition(3);
-        finishedMealArray3.push(response.hits[randomAjaxMealIndex].fields);
+         meals.meal3.meal.push(response.hits[randomAjaxMealIndex].fields);
       }
 
       // decide what item to choose next
@@ -326,55 +374,78 @@ $( document ).ready(function() {
   }
 
   // log the respective finished meal array and its  nutritional info
-  function printTotalNutrition(y) {
+  // function printTotalNutrition(y) {
 
-    if (y === 1) {
-      temp = finishedMealArray1;
-      console.log("finishedMealArray1: ");
-      console.log(temp);
-      console.log("finishedMeal2 nutriton:");
-      console.log("total calories: " + finishedMeal1Calories);
-      console.log("total protein: " + finishedMeal1Protein);
-      console.log("total carbs: " + finishedMeal1Carbs);
-      console.log("total fat: " + finishedMeal1Fat);
-      console.log("----------");
-      // temp = window[`finishedMealArray${y}`];
-      // console.log(`finishedMealArray${y}`);
-      // console.log(temp);
-      // console.log(`finishedMeal${y} nutriton:`);
-      // console.log("total calories: " + finishedMealNutrition[`finishedMeal${y}`].calories);
-      // console.log("total protein: " + finishedMealNutrition[`finishedMeal${y}`].protein);
-      // console.log("total carbs: " + finishedMealNutrition[`finishedMeal${y}`].carbs);
-      // console.log("total fat: " + finishedMealNutrition[`finishedMeal${y}`].fat);
-      // console.log("----------");
-    }
-    if (y === 2) {
-      temp = finishedMealArray2;
-      console.log("finishedMealArray2: ");
-      console.log(temp);
-      console.log("finishedMeal2 nutriton:");
-      console.log("total calories: " + finishedMeal2Calories);
-      console.log("total protein: " + finishedMeal2Protein);
-      console.log("total carbs: " + finishedMeal2Carbs);
-      console.log("total fat: " + finishedMeal2Fat);
-      console.log("----------");
-    }
-    if (y === 3) {
-      temp = finishedMealArray3;
-      console.log("finishedMealArray3: ");
-      console.log(temp);
-      console.log("finishedMeal3 nutriton:");
-      console.log("total calories: " + finishedMeal3Calories);
-      console.log("total protein: " + finishedMeal3Protein);
-      console.log("total carbs: " + finishedMeal3Carbs);
-      console.log("total fat: " + finishedMeal3Fat);
-      console.log("----------");
-    }
+  //   if (y === 1) {
+  //     temp = finishedMealArray1;
+  //     console.log("finishedMealArray1: ");
+  //     console.log(temp);
+  //     console.log("meal2 nutriton:");
+  //     console.log("total calories: " + meal1Calories);
+  //     console.log("total protein: " + meal1Protein);
+  //     console.log("total carbs: " + meal1Carbs);
+  //     console.log("total fat: " + meal1Fat);
+  //     console.log("----------");
+  //     // temp = window[`finishedMealArray${y}`];
+  //     // console.log(`finishedMealArray${y}`);
+  //     // console.log(temp);
+  //     // console.log(`finishedMeal${y} nutriton:`);
+  //     // console.log("total calories: " + meals[`finishedMeal${y}`].calories);
+  //     // console.log("total protein: " + meals[`finishedMeal${y}`].protein);
+  //     // console.log("total carbs: " + meals[`finishedMeal${y}`].carbs);
+  //     // console.log("total fat: " + meals[`finishedMeal${y}`].fat);
+  //     // console.log("----------");
+  //   }
+  //   if (y === 2) {
+  //     temp = finishedMealArray2;
+  //     console.log("finishedMealArray2: ");
+  //     console.log(temp);
+  //     console.log("meal2 nutriton:");
+  //     console.log("total calories: " + meal2Calories);
+  //     console.log("total protein: " + meal2Protein);
+  //     console.log("total carbs: " + meal2Carbs);
+  //     console.log("total fat: " + meal2Fat);
+  //     console.log("----------");
+  //   }
+  //   if (y === 3) {
+  //     temp = finishedMealArray3;
+  //     console.log("finishedMealArray3: ");
+  //     console.log(temp);
+  //     console.log("meal3 nutriton:");
+  //     console.log("total calories: " + meal3Calories);
+  //     console.log("total protein: " + meal3Protein);
+  //     console.log("total carbs: " + meal3Carbs);
+  //     console.log("total fat: " + meal3Fat);
+  //     console.log("----------");
+  //   }
 
-  }
+  // }
 
   // function that chooses our next item if we have enough calories
   function decideNextItem() {
+
+    function locallyStoreAllMeals(howManyMeals) {
+
+      for (let i = 1; i <= howManyMeals; i++) {
+         locallyStoreMeals(i);
+      }
+    }
+
+    function locallyStoreMeals(mealNumber) {
+      // console.log("temp: " + temp);
+      //   console.log('meals: ', meals);
+      let temp = "";
+      console.log('blah haha', meals[`meal${mealNumber}`].meal);
+      meals[`meal${mealNumber}`].meal.map(mealItem => {
+        temp = temp.concat(mealItem.item_name, "<br>");
+        // localStorage.setItem(`meal${mealNumber}Contents`, temp);
+      });
+      localStorage.setItem(`meal${mealNumber}Contents`, temp);
+      localStorage.setItem(`meal${mealNumber}Calories`, meals[`meal${mealNumber}`].calories);
+      localStorage.setItem(`meal${mealNumber}Protein`, meals[`meal${mealNumber}`].protein);
+      localStorage.setItem(`meal${mealNumber}Carbs`, meals[`meal${mealNumber}`].carbs);
+      localStorage.setItem(`meal${mealNumber}Fat`, meals[`meal${mealNumber}`].fat);
+    }
 
     //stores meal info in local storage
     function persist(){
@@ -386,34 +457,35 @@ $( document ).ready(function() {
           temp = temp.concat(finishedMealArray1[i].item_name, "<br>")
 
         }
-        console.log("temp: " + temp)
-        localStorage.setItem("meal1Contents", temp);
-        localStorage.setItem("meal1Calories", finishedMeal1Calories);
-        localStorage.setItem("meal1Protein", finishedMeal1Protein);
-        localStorage.setItem("meal1Carbs", finishedMeal1Carbs);
-        localStorage.setItem("meal1Fat", finishedMeal1Fat);
+        // console.log("temp: " + temp)
+        // console.log('meals: ', meals);
+        // localStorage.setItem("meal1Contents", temp);
+        // localStorage.setItem("meal1Calories", meals.meal1.calories);
+        // localStorage.setItem("meal1Protein", meals.meal1.protein);
+        // localStorage.setItem("meal1Carbs", meals.meal1.carbs);
+        // localStorage.setItem("meal1Fat", meals.meal1.fat);
 
         for(let i = 0; i<finishedMealArray2.length; i++){
 
           temp2 = temp2.concat(finishedMealArray2[i].item_name, "<br>")
 
         }
-        localStorage.setItem("meal2Contents", temp2);
-        localStorage.setItem("meal2Calories", finishedMeal2Calories);
-        localStorage.setItem("meal2Protein", finishedMeal2Protein);
-        localStorage.setItem("meal2Carbs", finishedMeal2Carbs);
-        localStorage.setItem("meal2Fat", finishedMeal2Fat);
+        // localStorage.setItem("meal2Contents", temp2);
+        // localStorage.setItem("meal2Calories", meal2Calories);
+        // localStorage.setItem("meal2Protein", meal2Protein);
+        // localStorage.setItem("meal2Carbs", meal2Carbs);
+        // localStorage.setItem("meal2Fat", meal2Fat);
 
         for(let i = 0; i<finishedMealArray3.length; i++){
 
           temp3 = temp3.concat(finishedMealArray3[i].item_name, "<br>")
 
         }
-        localStorage.setItem("meal3Contents", temp3);
-        localStorage.setItem("meal3Calories", finishedMeal3Calories);
-        localStorage.setItem("meal3Protein", finishedMeal3Protein);
-        localStorage.setItem("meal3Carbs", finishedMeal3Carbs);
-        localStorage.setItem("meal3Fat", finishedMeal3Fat);
+        // localStorage.setItem("meal3Contents", temp3);
+        // localStorage.setItem("meal3Calories", meal3Calories);
+        // localStorage.setItem("meal3Protein", meal3Protein);
+        // localStorage.setItem("meal3Carbs", meal3Carbs);
+        // localStorage.setItem("meal3Fat", meal3Fat);
     }
 
   // depending on the first member of each meal array, set the img src tag in local storage
@@ -421,7 +493,7 @@ $( document ).ready(function() {
     let getImage;
    if (x === 1){
 
-        getImage = finishedMealArray1[0].item_name.toLowerCase();
+        getImage = meals.meal1.meal[0].item_name.toLowerCase();
 
        if (getImage.indexOf("burger") != -1){
           localStorage.setItem("meal1ImgSrc", "assets/images/burger.jpg");
@@ -458,7 +530,7 @@ $( document ).ready(function() {
        }}
    else if (x === 2){
 
-        getImage = finishedMealArray2[0].item_name.toLowerCase();
+        getImage = meals.meal2.meal[0].item_name.toLowerCase();
 
        if (getImage.indexOf("burger") != -1){
           localStorage.setItem("meal2ImgSrc", "assets/images/burger.jpg");
@@ -495,7 +567,7 @@ $( document ).ready(function() {
        }}
    else if (x === 3){
 
-          getImage = finishedMealArray3[0].item_name.toLowerCase();
+          getImage = meals.meal3.meal[0].item_name.toLowerCase();
 
        if (getImage.indexOf("burger") != -1){
           localStorage.setItem("meal3ImgSrc", "assets/images/burger.jpg");
@@ -535,19 +607,20 @@ $( document ).ready(function() {
 
     if (maxCalories <= 149) {
       console.log("not enough calories left");
+      console.log("meals", meals);
 
       // if we don't have enough calories to add another item, we modify it's respective flag,
       // which will signal to stop modifying that meal
       // then we move onto populating the next meal
       if (flagArray[0] === false) {
         flagArray[0] = true;
-        printTotalNutrition(1);
+        // printTotalNutrition(1);
         resetValues();
         chooseQuery();
         getFood();
       } else if (flagArray[1] === false) {
         flagArray[1] = true;
-        printTotalNutrition(2);
+        // printTotalNutrition(2);
         resetValues();
         chooseQuery();
         getFood();
@@ -556,10 +629,11 @@ $( document ).ready(function() {
       // then log each meal and its nutritional info
       else if (flagArray[2] === false) {
         flagArray[2] = true;
-        printTotalNutrition(1);
-        printTotalNutrition(2);
-        printTotalNutrition(3);
-        persist();
+        // printTotalNutrition(1);
+        // printTotalNutrition(2);
+        // printTotalNutrition(3);
+        // persist();
+        locallyStoreAllMeals(3);
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
