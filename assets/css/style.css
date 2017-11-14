@@ -23,6 +23,10 @@ footer.page-footer {
   bottom: 0;
 }
 
+.get-bold {
+  font-weight: bold;
+}
+
 .tabs .tab a {
   color: #bf4444;
 }
