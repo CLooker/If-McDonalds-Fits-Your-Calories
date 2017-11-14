@@ -489,120 +489,127 @@ $( document ).ready(function() {
     }
 
   // depending on the first member of each meal array, set the img src tag in local storage
-  function setImageFunc(x){
-    let getImage;
-   if (x === 1){
+  function setAllMealImages(howManyMeals) {
+    for (let i = 1; i <= howManyMeals; i++) {
+      setImage(i);
+    }
+  }
 
-        getImage = meals.meal1.meal[0].item_name.toLowerCase();
+  function setImage(mealNumber){
+    // let getImage;
+   // if (x === 1){
+
+      let getImage = meals[`meal${mealNumber}`].meal[0].item_name.toLowerCase();
 
        if (getImage.indexOf("burger") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/burger.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/burger.jpg");
        } else if (getImage.indexOf("mcchicken") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/mcchicken.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/mcchicken.jpg");
        } else if (getImage.indexOf("fish") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/fish.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/fish.jpg");
        } else if (getImage.indexOf("salad") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/salad.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/salad.jpg");
        } else if (getImage.indexOf("fries") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/fries.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/fries.jpg");
        } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/parfait.JPG");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/parfait.JPG");
        } else if (getImage.indexOf("wrap") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/wrap.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/wrap.jpg");
        } else if (getImage.indexOf("mcrib") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/mcrib.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/mcrib.jpg");
        } else if (getImage.indexOf("big mac") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/bigMac.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/bigMac.jpg");
        } else if (getImage.indexOf("mcmuffin") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/mcmuffin.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/mcmuffin.jpg");
        } else if (getImage.indexOf("apple pie") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/applePie.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/applePie.jpg");
        } else if (getImage.indexOf("cola") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/cola.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/cola.jpg");
        } else if (getImage.indexOf("crab") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/crab.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/crab.jpg");
        } else if (getImage.indexOf("vernor") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/vernors.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/vernors.jpg");
        }else if (getImage.indexOf("lemonade") != -1){
-          localStorage.setItem("meal1ImgSrc", "assets/images/lemonade.jpg");
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/lemonade.jpg");
        }    else {
-          localStorage.setItem("meal1ImgSrc", "assets/images/arches.jpg");
-       }}
-   else if (x === 2){
+          localStorage.setItem(`meal${mealNumber}ImgSrc`, "assets/images/arches.jpg");
+       }
+     }
+   // else if (x === 2){
 
-        getImage = meals.meal2.meal[0].item_name.toLowerCase();
+   //      getImage = meals.meal2.meal[0].item_name.toLowerCase();
 
-       if (getImage.indexOf("burger") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/burger.jpg");
-       } else if (getImage.indexOf("mcchicken") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/mcchicken.jpg");
-       } else if (getImage.indexOf("fish") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/fish.jpg");
-       } else if (getImage.indexOf("salad") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/salad.jpg");
-       } else if (getImage.indexOf("fries") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/fries.jpg");
-       } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/parfait.JPG");
-       } else if (getImage.indexOf("wrap") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/wrap.jpg");
-       } else if (getImage.indexOf("mcrib") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/mcrib.jpg");
-       } else if (getImage.indexOf("big mac") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/bigMac.jpg");
-       } else if (getImage.indexOf("mcmuffin") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/mcmuffin.jpg");
-       } else if (getImage.indexOf("apple pie") != -1){
-           localStorage.setItem("meal2ImgSrc", "assets/images/applePie.jpg");
-       } else if (getImage.indexOf("cola") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/cola.jpg");
-       } else if (getImage.indexOf("crab") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/crab.jpg");
-       } else if (getImage.indexOf("vernor") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/vernors.jpg");
-       } else if (getImage.indexOf("lemonade") != -1){
-          localStorage.setItem("meal2ImgSrc", "assets/images/lemonade.jpg");
-       }      else {
-          localStorage.setItem("meal2ImgSrc", "assets/images/arches.jpg");
-       }}
-   else if (x === 3){
+   //     if (getImage.indexOf("burger") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/burger.jpg");
+   //     } else if (getImage.indexOf("mcchicken") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/mcchicken.jpg");
+   //     } else if (getImage.indexOf("fish") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/fish.jpg");
+   //     } else if (getImage.indexOf("salad") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/salad.jpg");
+   //     } else if (getImage.indexOf("fries") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/fries.jpg");
+   //     } else if (getImage.indexOf("parfait") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/parfait.JPG");
+   //     } else if (getImage.indexOf("wrap") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/wrap.jpg");
+   //     } else if (getImage.indexOf("mcrib") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/mcrib.jpg");
+   //     } else if (getImage.indexOf("big mac") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/bigMac.jpg");
+   //     } else if (getImage.indexOf("mcmuffin") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/mcmuffin.jpg");
+   //     } else if (getImage.indexOf("apple pie") != -1){
+   //         localStorage.setItem("meal2ImgSrc", "assets/images/applePie.jpg");
+   //     } else if (getImage.indexOf("cola") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/cola.jpg");
+   //     } else if (getImage.indexOf("crab") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/crab.jpg");
+   //     } else if (getImage.indexOf("vernor") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/vernors.jpg");
+   //     } else if (getImage.indexOf("lemonade") != -1){
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/lemonade.jpg");
+   //     }      else {
+   //        localStorage.setItem("meal2ImgSrc", "assets/images/arches.jpg");
+   //     }}
+   // else if (x === 3){
 
-          getImage = meals.meal3.meal[0].item_name.toLowerCase();
+   //        getImage = meals.meal3.meal[0].item_name.toLowerCase();
 
-       if (getImage.indexOf("burger") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/burger.jpg");
-       } else if (getImage.indexOf("mcchicken") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/mcchicken.jpg");
-       } else if (getImage.indexOf("fish") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/fish.jpg");
-       } else if (getImage.indexOf("salad") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/salad.jpg");
-       } else if (getImage.indexOf("fries") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/fries.jpg");
-       } else if (getImage.indexOf("parfait") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/parfait.JPG");
-       } else if (getImage.indexOf("wrap") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/wrap.jpg");
-       } else if (getImage.indexOf("mcrib") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/mcrib.jpg");
-       } else if (getImage.indexOf("big mac") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/bigMac.jpg");
-       } else if (getImage.indexOf("mcmuffin") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/mcmuffin.jpg");
-       } else if (getImage.indexOf("apple pie") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/applePie.jpg");
-       } else if (getImage.indexOf("cola") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/cola.jpg");
-       } else if (getImage.indexOf("crab") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/crab.jpg");
-       } else if (getImage.indexOf("vernor") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/vernors.jpg");
-       } else if (getImage.indexOf("lemonade") != -1){
-          localStorage.setItem("meal3ImgSrc", "assets/images/lemonade.jpg");
-       }     else {
-          localStorage.setItem("meal3ImgSrc", "assets/images/arches.jpg");
-       }}
- }
+   //     if (getImage.indexOf("burger") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/burger.jpg");
+   //     } else if (getImage.indexOf("mcchicken") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/mcchicken.jpg");
+   //     } else if (getImage.indexOf("fish") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/fish.jpg");
+   //     } else if (getImage.indexOf("salad") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/salad.jpg");
+   //     } else if (getImage.indexOf("fries") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/fries.jpg");
+   //     } else if (getImage.indexOf("parfait") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/parfait.JPG");
+   //     } else if (getImage.indexOf("wrap") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/wrap.jpg");
+   //     } else if (getImage.indexOf("mcrib") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/mcrib.jpg");
+   //     } else if (getImage.indexOf("big mac") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/bigMac.jpg");
+   //     } else if (getImage.indexOf("mcmuffin") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/mcmuffin.jpg");
+   //     } else if (getImage.indexOf("apple pie") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/applePie.jpg");
+   //     } else if (getImage.indexOf("cola") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/cola.jpg");
+   //     } else if (getImage.indexOf("crab") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/crab.jpg");
+   //     } else if (getImage.indexOf("vernor") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/vernors.jpg");
+   //     } else if (getImage.indexOf("lemonade") != -1){
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/lemonade.jpg");
+   //     }     else {
+   //        localStorage.setItem("meal3ImgSrc", "assets/images/arches.jpg");
+   //     }}
+
 
 
     if (maxCalories <= 149) {
@@ -634,9 +641,7 @@ $( document ).ready(function() {
         // printTotalNutrition(3);
         // persist();
         locallyStoreAllMeals(3);
-        setImageFunc(1);
-        setImageFunc(2);
-        setImageFunc(3);
+        setAllMealImages(3);
         // window.location.replace("meal plan.html");
 
 
