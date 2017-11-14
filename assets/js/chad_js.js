@@ -45,8 +45,8 @@ $( document ).ready(function() {
   function showFood(mealNumber){
     $(`#meal${mealNumber}Contents`).html(localStorage.getItem(`meal${mealNumber}Contents`));
 
-    let temp = $(`#meal${mealNumber}Calories`).html("Calories: ");
-    temp = temp.append(localStorage.getItem(`#meal${mealNumber}Calories`));
+    var temp = $(`#meal${mealNumber}Calories`).html("Calories: ");
+    temp = temp.append(localStorage.getItem(`meal${mealNumber}Calories`));
     temp = temp.append("<br>");
     temp = temp.append("Protein: ");
     temp = temp.append(localStorage.getItem(`meal${mealNumber}Protein`));
@@ -563,7 +563,7 @@ $( document ).ready(function() {
         setImageFunc(1);
         setImageFunc(2);
         setImageFunc(3);
-        window.location.replace("meal plan.html");
+        // window.location.replace("meal plan.html");
 
 
       }
