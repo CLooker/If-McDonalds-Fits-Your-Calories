@@ -67,8 +67,12 @@ $(document).ready(function() {
 
   function locallyStoreMeals(mealNumber) {
     let temp = "";
-    meals[`meal${mealNumber}`].meal.map(mealItem => {
-      temp = temp.concat(mealItem.item_name, "<br>");
+    meals[`meal${mealNumber}`].meal.map((mealItem, index) => {
+      if (index === (meals[`meal${mealNumber}`].meal.length - 1) ) {
+        temp = temp.concat(mealItem.item_name, "<br>");
+      } else {
+        temp = temp.concat(mealItem.item_name + ",", "<br>");
+      }
     });
     localStorage.setItem(`meal${mealNumber}Contents`, temp);
     localStorage.setItem(`meal${mealNumber}Calories`, meals[`meal${mealNumber}`].calories);
