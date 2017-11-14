@@ -67,6 +67,11 @@ $(document).ready(function() {
 
   function locallyStoreMeals(mealNumber) {
     let temp = "";
+    // map over meals array for the meal that corresponds to mealNumber
+    // if map is dealing with the final member of meal array
+    // don't add a comma to the end of it, otherwise add one
+    // add <br> to the end of each mealItem
+    // so when this string displays, it displays properly
     meals[`meal${mealNumber}`].meal.map((mealItem, index) => {
       if (index === (meals[`meal${mealNumber}`].meal.length - 1) ) {
         temp = temp.concat(mealItem.item_name, "<br>");
@@ -99,9 +104,9 @@ $(document).ready(function() {
       parfait: "assets/images/parfait.JPG",
       wrap: "assets/images/wrap.jpg",
       mcrib: "assets/images/mcrib.jpg",
-      bigMac: "assets/images/bigMac.jpg",
+      bigmac: "assets/images/bigMac.jpg",
       mcmuffin: "assets/images/mcmuffin.jpg",
-      applePie: "assets/images/applePie.jpg",
+      applepie: "assets/images/applePie.jpg",
       cola: "assets/images/cola.jpg",
       crab: "assets/images/crab.jpg",
       vernor: "assets/images/vernors.jpg",
@@ -110,7 +115,7 @@ $(document).ready(function() {
     };
 
     // if first item in a meal array matches a key, set its img src to the key's value
-    let getImage = meals[`meal${mealNumber}`].meal[0].item_name.toLowerCase();
+    let getImage = meals[`meal${mealNumber}`].meal[0].item_name.toLowerCase().replace(/\s+/g, '');;
     for (key in mealImageSrc) {
       if (getImage.indexOf(key) != -1) {
         localStorage.setItem(`meal${mealNumber}ImgSrc`, mealImageSrc[key]);
