@@ -14,8 +14,8 @@ var directionsDisplay;
 
 // default location: 300 Atrium Drive, Somerset
 var mapLocation = {
-  lat: 40.535140, 
-  lng: -74.521617 
+  lat: 40.535140,
+  lng: -74.521617
 };
 
 // flag to keep track if using geolocation for nearest location search
@@ -57,9 +57,9 @@ function initMap() {
       console.log("Place Selected!");
       console.log(places[0]);
 
-      mapLocation = places[0].geometry.location;       
+      mapLocation = places[0].geometry.location;
 
-      searchForLocations();   
+      searchForLocations();
       return;
     }
 
@@ -125,7 +125,7 @@ function tryLocation(){
       geolocationFound = true;
 
       searchForLocations();
-    }, 
+    },
     function() {
       // geolocation failed
       handleLocationError(true, infoWindow);
@@ -157,7 +157,7 @@ function searchForLocations(){
     rankBy: google.maps.places.RankBy.DISTANCE,
     name: "McDonald's",
     type: ['restaurant']
-  }, 
+  },
   findLocations);
 }
 
@@ -173,7 +173,7 @@ function findLocations(results, status) {
       nearestLocation = nearestVenue.geometry.location;
 
       getDirections();
-    }          
+    }
   }
 }
 
@@ -222,7 +222,7 @@ function getLocationDetails(){
       console.log(place);
 
       var locationString = geolocationFound ?
-        "as determined by GeoLocation" : 
+        "as determined by GeoLocation" :
         "as entered by the user";
       infoWindow.setContent(
         "<div><strong><em>Your location</em></strong><br>" +
@@ -231,7 +231,10 @@ function getLocationDetails(){
       infoWindow.open(map);
 
       // var inputLocation = document.getElementById('loc-input');
-      map.controls[google.maps.ControlPosition.TOP_LEFT].pop();
+            var mapControls = map.controls[google.maps.ControlPosition.TOP_LEFT];
+      if (mapControls.length > 0){
+        mapControls.pop();
+      }
     }
   });
 }
