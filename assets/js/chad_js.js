@@ -34,7 +34,7 @@ $(document).ready(function() {
     }
 
     function showAllMeals(howManyMeals) {
-      function showOneMeal(mealNumber) {
+      for (let mealNumber = 1; mealNumber <= howManyMeals; mealNumber++) {
         $(`#meal${mealNumber}Contents`).html(
           localStorage.getItem(`meal${mealNumber}Contents`)
         );
@@ -51,10 +51,6 @@ $(document).ready(function() {
           .append("Fat: ")
           .append(localStorage.getItem(`meal${mealNumber}Fat`));
       }
-
-      for (let i = 1; i <= howManyMeals; i++) {
-        showOneMeal(i);
-      }
     }
 
     function getMealPictures(howManyMeals) {
@@ -69,8 +65,6 @@ $(document).ready(function() {
 
   // when user submits calories
   $("#submitBtn").click(function() {
-    console.log("populating meals");
-
     // Nutrionix API information
     let nxAppId = "da62e249",
       nxAppKey = "7276dd89558157da5bd0ca1053e932cb",
@@ -111,9 +105,15 @@ $(document).ready(function() {
       foodSearchTryAgain = false;
 
     // start our first cycle of choosing our search term and manipulating what the API returns
-    setFlagArray(3);
-    chooseQuery();
-    getFood();
+    validateInput();
+
+    function validateInput() {
+      let inputValidated = isNaN($("#calorieInput")
+          .val()
+          .trim())
+      ? alert("Please enter your target calories for this meal.")
+      : (console.log("populating meals"), setFlagArray(3), chooseQuery(), getFood())
+    }
 
     // flagArray is array of booleans
     // when a meal is finished populating
@@ -295,7 +295,7 @@ $(document).ready(function() {
                 flagArray[2] = true;
                 locallyStoreAllMeals(3);
                 setAllMealImages(3);
-                window.location.replace("meal plan.html");
+                // window.location.replace("meal plan.html");
               }
               return;
             } else {
@@ -346,7 +346,7 @@ $(document).ready(function() {
             }
 
             function locallyStoreAllMeals(howManyMeals) {
-              function locallyStoreMeals(mealNumber) {
+              for (let mealNumber = 1; mealNumber <= howManyMeals; mealNumber++) {
                 let temp = "";
                 // map over meals array for the meal that corresponds to mealNumber
                 // if map is dealing with the final member of meal array
@@ -377,10 +377,6 @@ $(document).ready(function() {
                   `meal${mealNumber}Fat`,
                   meals[`meal${mealNumber}`].fat
                 );
-              }
-
-              for (let i = 1; i <= howManyMeals; i++) {
-                locallyStoreMeals(i);
               }
             }
 
