@@ -109,7 +109,7 @@ $(document).ready(function() {
     validateInput();
 
     function validateInput() {
-      let inputValidated = isNaN(userInput)
+      isNaN(userInput)
         ? alert("Please enter your target calories for this meal.")
         : (console.log("populating meals"),
           setFlagArray(3),
