@@ -66,8 +66,8 @@ $(document).ready(function() {
   // when user submits calories
   $("#submitBtn").click(function() {
     // Nutrionix API information
-    let nxAppId = "da62e249",
-      nxAppKey = "7276dd89558157da5bd0ca1053e932cb",
+    let nxAppId = "74726c7b",
+      nxAppKey = "90742700ec90b139a3994f2f92d1ff0b",
       // Google API key
       gApiKey = "AIzaSyAjnWWbP30ssxxKP-jULse9lWmbR9AIaZ8",
       // array of booleans, the value of each member will tell us which meal array to push to, and when to start a new meal array
@@ -77,6 +77,7 @@ $(document).ready(function() {
         $("#calorieInput")
           .val()
           .trim()
+          .replace(/,/g, "")
       ),
       // keep track of how many calories we have left, it will be altered as we build our meals
       maxCalories = userInput,
@@ -108,11 +109,12 @@ $(document).ready(function() {
     validateInput();
 
     function validateInput() {
-      let inputValidated = isNaN($("#calorieInput")
-          .val()
-          .trim())
-      ? alert("Please enter your target calories for this meal.")
-      : (console.log("populating meals"), setFlagArray(3), chooseQuery(), getFood())
+      let inputValidated = isNaN(userInput)
+        ? alert("Please enter your target calories for this meal.")
+        : (console.log("populating meals"),
+          setFlagArray(3),
+          chooseQuery(),
+          getFood());
     }
 
     // flagArray is array of booleans
@@ -295,7 +297,7 @@ $(document).ready(function() {
                 flagArray[2] = true;
                 locallyStoreAllMeals(3);
                 setAllMealImages(3);
-                // window.location.replace("meal plan.html");
+                window.location.replace("meal plan.html");
               }
               return;
             } else {
@@ -346,7 +348,11 @@ $(document).ready(function() {
             }
 
             function locallyStoreAllMeals(howManyMeals) {
-              for (let mealNumber = 1; mealNumber <= howManyMeals; mealNumber++) {
+              for (
+                let mealNumber = 1;
+                mealNumber <= howManyMeals;
+                mealNumber++
+              ) {
                 let temp = "";
                 // map over meals array for the meal that corresponds to mealNumber
                 // if map is dealing with the final member of meal array
